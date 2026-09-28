@@ -81,6 +81,35 @@ class TestExtractors(unittest.TestCase):
         self.assertIsNone(fields["tribe_name"])
         self.assertIsNone(fields["issue_date"])
 
+    def test_marksheet_registration(self):
+        extractor = get_extractor("marksheet")
+        self.assertIsNotNone(extractor)
+        self.assertEqual(extractor.document_type, "marksheet")
+        self.assertEqual(extractor.required_fields, ["name"])
+
+    def test_marksheet_extract(self):
+        text = self._read_sample("marksheet.txt")
+        extractor = get_extractor("marksheet")
+        fields = extractor.extract(text)
+
+        self.assertIsNotNone(fields["name"])
+        self.assertIn("Sunita Soren", fields["name"])
+        self.assertIsNotNone(fields["institution"])
+        self.assertIn("RANCHI UNIVERSITY", fields["institution"])
+        self.assertIsNotNone(fields["course"])
+        self.assertIn("Bachelor of Technology", fields["course"])
+        self.assertEqual(fields["total_marks"], "1000")
+        self.assertEqual(fields["marks_obtained"], "840")
+        self.assertEqual(fields["percentage"], "84.0")
+        self.assertEqual(fields["academic_year"], "2022-2023")
+
+    def test_marksheet_empty(self):
+        extractor = get_extractor("marksheet")
+        fields = extractor.extract("")
+        self.assertIsNone(fields["name"])
+        self.assertIsNone(fields["institution"])
+        self.assertIsNone(fields["total_marks"])
+
 
 if __name__ == "__main__":
     unittest.main()
