@@ -22,4 +22,6 @@ def get_extractor(document_type: str) -> Optional[BaseExtractor]:
 
 # Register extractor implementations
 from . import income_certificate  # noqa: E402, F401
+from . import caste_certificate  # noqa: E402, F401
+
 
