@@ -3,7 +3,7 @@ from typing import Optional, List, Dict, Any
 from uuid import UUID
 from pydantic import BaseModel, ConfigDict
 
-from app.schemas.document import DocumentResponse
+from app.schemas.document import DocumentResponse, DocumentDetailResponse
 from app.schemas.verification import DeficiencyResponse, VerificationResultResponse
 
 
@@ -62,7 +62,7 @@ class ApplicationResponse(BaseModel):
 
 
 class ApplicationDetailResponse(ApplicationResponse):
-    documents: List[DocumentResponse] = []
+    documents: List[DocumentDetailResponse] = []
     deficiencies: List[DeficiencyResponse] = []
     verification_results: List[VerificationResultResponse] = []
     status_history: List[StatusHistoryResponse] = []
