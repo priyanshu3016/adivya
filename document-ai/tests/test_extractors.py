@@ -139,6 +139,34 @@ class TestExtractors(unittest.TestCase):
         self.assertIsNone(fields["admission_date"])
         self.assertIsNone(fields["reference_number"])
 
+    def test_identity_document_registration(self):
+        extractor = get_extractor("identity_document")
+        self.assertIsNotNone(extractor)
+        self.assertEqual(extractor.document_type, "identity_document")
+        self.assertEqual(
+            extractor.required_fields,
+            ["name", "id_type", "id_number"],
+        )
+
+    def test_identity_document_extract(self):
+        text = self._read_sample("identity_document.txt")
+        extractor = get_extractor("identity_document")
+        fields = extractor.extract(text)
+
+        self.assertIsNotNone(fields["name"])
+        self.assertIn("Birsa Munda", fields["name"])
+        self.assertEqual(fields["id_type"], "aadhaar")
+        self.assertEqual(fields["id_number"], "9876 5432 1098")
+        self.assertEqual(fields["date_of_birth"], "15/11/1975")
+
+    def test_identity_document_empty(self):
+        extractor = get_extractor("identity_document")
+        fields = extractor.extract("")
+        self.assertIsNone(fields["name"])
+        self.assertIsNone(fields["id_type"])
+        self.assertIsNone(fields["id_number"])
+        self.assertIsNone(fields["date_of_birth"])
+
 
 if __name__ == "__main__":
     unittest.main()

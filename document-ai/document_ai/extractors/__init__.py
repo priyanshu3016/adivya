@@ -25,6 +25,8 @@ from . import income_certificate  # noqa: E402, F401
 from . import caste_certificate  # noqa: E402, F401
 from . import marksheet  # noqa: E402, F401
 from . import admission_letter  # noqa: E402, F401
+from . import identity_document  # noqa: E402, F401
+
 
 
 
