@@ -110,6 +110,35 @@ class TestExtractors(unittest.TestCase):
         self.assertIsNone(fields["institution"])
         self.assertIsNone(fields["total_marks"])
 
+    def test_admission_letter_registration(self):
+        extractor = get_extractor("admission_letter")
+        self.assertIsNotNone(extractor)
+        self.assertEqual(extractor.document_type, "admission_letter")
+        self.assertEqual(extractor.required_fields, ["name", "institution"])
+
+    def test_admission_letter_extract(self):
+        text = self._read_sample("admission_letter.txt")
+        extractor = get_extractor("admission_letter")
+        fields = extractor.extract(text)
+
+        self.assertIsNotNone(fields["name"])
+        self.assertIn("Arjun Tudu", fields["name"])
+        self.assertIsNotNone(fields["institution"])
+        self.assertIn("INDIAN INSTITUTE OF TECHNOLOGY RANCHI", fields["institution"])
+        self.assertIsNotNone(fields["course"])
+        self.assertIn("Master of Science (Data Analytics)", fields["course"])
+        self.assertEqual(fields["admission_date"], "10/08/2023")
+        self.assertEqual(fields["reference_number"], "IITR/ADM/2023/0481")
+
+    def test_admission_letter_empty(self):
+        extractor = get_extractor("admission_letter")
+        fields = extractor.extract("")
+        self.assertIsNone(fields["name"])
+        self.assertIsNone(fields["institution"])
+        self.assertIsNone(fields["course"])
+        self.assertIsNone(fields["admission_date"])
+        self.assertIsNone(fields["reference_number"])
+
 
 if __name__ == "__main__":
     unittest.main()
