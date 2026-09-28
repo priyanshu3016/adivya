@@ -18,3 +18,8 @@ def get_extractor(document_type: str) -> Optional[BaseExtractor]:
     """Look up an extractor class by document type and return a new instance."""
     cls = _REGISTRY.get(document_type)
     return cls() if cls else None
+
+
+# Register extractor implementations
+from . import income_certificate  # noqa: E402, F401
+
