@@ -107,6 +107,7 @@ async def create_application(
     )
     db.add(history)
     await db.flush()
+    await db.refresh(application)
     return application
 
 
@@ -163,6 +164,7 @@ async def update_application_status(
 
     old_status = app.status
     app.status = new_status
+    app.updated_at = datetime.now(timezone.utc)
     if new_status == "submitted" and not app.submitted_at:
         app.submitted_at = datetime.now(timezone.utc)
 
@@ -176,6 +178,7 @@ async def update_application_status(
     )
     db.add(history)
     await db.flush()
+    await db.refresh(app)
     return app
 
 

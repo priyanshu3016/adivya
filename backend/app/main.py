@@ -43,6 +43,10 @@ async def api_v1_health_check():
 # Router inclusions
 from app.routes.auth import router as auth_router
 from app.routes.schemes import router as schemes_router
+from app.routes.applications import router as applications_router
+from app.routes.applicant import router as applicant_router
 
 app.include_router(auth_router)
 app.include_router(schemes_router)
+app.include_router(applications_router)
+app.include_router(applicant_router)
