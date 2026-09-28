@@ -1,0 +1,27 @@
+RANCHI UNIVERSITY
+RANCHI, JHARKHAND
+EXAMINATION DIVISION
+
+STATEMENT OF MARKS
+GRADE CARD
+
+Course: Bachelor of Technology (Computer Science)
+Academic Year: 2022-2023
+Semester: VIII Final Examination
+
+Name of Student: Sunita Soren
+Roll No: 19RUBCS045
+
+Subject Codes & Scores:
+CS801: Data Mining - 88
+CS802: Artificial Intelligence - 92
+CS803: Cloud Computing - 80
+CS804: Project Work - 180
+
+Total Marks: 1000
+Marks Obtained: 840
+Percentage: 84.0%
+Result: Pass First Class with Distinction
+
+Controller of Examinations
+Ranchi University
