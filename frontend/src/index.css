@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+@theme {
+  --color-royal-blue: #014BAA;
+  --color-royal-blue-dark: #003780;
+  --color-royal-blue-light: #1E6BE6;
+  --color-royal-blue-50: #EEF4FF;
+  --color-royal-blue-100: #D9E6FE;
+  
+  --color-light-cream: #F8F3F0;
+  --color-cream-card: #FFFFFF;
+  --color-cream-border: #E8DDD7;
+  --color-cream-accent: #EFE8E2;
+
+  --color-charcoal-900: #0F172A;
+  --color-charcoal-800: #1E293B;
+  --color-charcoal-700: #334155;
+  --color-charcoal-600: #475569;
+
+  --color-gov-green: #16A34A;
+  --color-gov-green-bg: #F0FDF4;
+  --color-gov-amber: #D97706;
+  --color-gov-amber-bg: #FFFBEB;
+  --color-gov-red: #DC2626;
+  --color-gov-red-bg: #FEF2F2;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  background-color: #F8F3F0;
+  color: #0F172A;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Subtle tribal heritage geometric pattern classes */
+.bg-tribal-pattern-cream {
+  background-color: #F8F3F0;
+  background-image: radial-gradient(#014BAA 0.75px, transparent 0.75px), radial-gradient(#014BAA 0.75px, #F8F3F0 0.75px);
+  background-size: 28px 28px;
+  background-position: 0 0, 14px 14px;
+  background-opacity: 0.04;
+}
+
+.bg-tribal-pattern-blue {
+  background-color: #014BAA;
+  background-image: radial-gradient(rgba(248, 243, 240, 0.18) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F8F3F0;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
